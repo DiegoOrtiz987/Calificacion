@@ -38,6 +38,12 @@ public class Asignatura {
     public void setNota(int nota) {
         this.nota = nota;
     }
+    
+    public double obtenerMedia(double suma, int cant){
+    
+        return (suma/cant);
+    }
+    
    
 }
 

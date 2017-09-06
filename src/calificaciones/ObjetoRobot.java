@@ -17,142 +17,142 @@ public class ObjetoRobot {
     
     public boolean pedirNuevamente=true; 
 	
-	public int Leer ()
-	{
-		String  valorObtenido;
-		int valorConvertido=0;
-		try {
-			InputStreamReader io = new InputStreamReader(System.in);
-			BufferedReader leo = new BufferedReader(io);
-			valorObtenido = leo.readLine();
-			valorConvertido = Integer.parseInt(valorObtenido);
-			pedirNuevamente= false; 
-			if (valorConvertido<=0) {
-				System.out.println("	MENSAJE: El numero ingresado debe ser mayor a Cero(0).");
-				System.out.println("                 *****************************         \n");
-				pedirNuevamente = !pedirNuevamente;
-			}
-		    
-		} catch (NumberFormatException nf) {
-			System.out.println("	MENSAJE: El valor ingresado no corresponde a un numero.");
-			System.out.println("                      *****************************         \n");
-			pedirNuevamente= true;
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-			pedirNuevamente= true;
-		}
-		
-		return valorConvertido;
-	}
-	
-	public int Leer2 ()
-	{
-		String  valorObtenido;
-		int valorConvertido=0;
-		try {
-			InputStreamReader io = new InputStreamReader(System.in);
-			BufferedReader leo = new BufferedReader(io);
-			valorObtenido = leo.readLine();
-			valorConvertido = Integer.parseInt(valorObtenido);
-			pedirNuevamente= false; 
-		    
-		} catch (NumberFormatException nf) {
-			System.out.println("	MENSAJE: El valor ingresado no corresponde a un numero Entero.");
-			System.out.println("                      *****************************         \n");
-			pedirNuevamente= true;
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-			pedirNuevamente= true;
-		}
-		
-		return valorConvertido;
-	}
-	
-
-	public float Leer3 ()
-	{
-		String  valorObtenido;
-		float valorConvertido=0;
-		try {
-			InputStreamReader io = new InputStreamReader(System.in);
-			BufferedReader leo = new BufferedReader(io);
-			valorObtenido = leo.readLine();
-			valorConvertido = Float.parseFloat(valorObtenido);
-			pedirNuevamente= false; 
-		    
-		} catch (NumberFormatException nf) {
-			System.out.println("	MENSAJE: El valor ingresado no corresponde a un numero.");
-			System.out.println("                      *****************************         \n");
-			pedirNuevamente= true;
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-			pedirNuevamente= true;
-		}
-		
-		return valorConvertido;
-	}
-	
-	
-
-	// Leer Texto
-	public String Leer4 ()
+        // Obtener un String
+    
+	public String Leer (String mensaje)
 	{
 		String  valorObtenido="";
+                
 		try {
-			InputStreamReader io = new InputStreamReader(System.in);
-			BufferedReader leo = new BufferedReader(io);
-			valorObtenido = leo.readLine();
-			
+			valorObtenido = JOptionPane.showInputDialog(null,mensaje);
 			pedirNuevamente= false; 
 		    
-		} catch (NumberFormatException nf) {
-			System.out.println("	MENSAJE: El valor ingresado no corresponde a un numero.");
-			System.out.println("                      *****************************         \n");
-			pedirNuevamente= true;
-			
 		} catch (Exception e) {
 			// TODO: handle exception
 			pedirNuevamente= true;
-		}	
+		}
+		
 		return valorObtenido;
 	}
+	
+        // Conversión a Entero
+        
+	public int Leer2 (String mensaje)
+	{
+		String  valorObtenidoDelTeclado;
+		int valorConvertido=0;
+                
+                do{
+                    try {
+                            /*InputStreamReader io = new InputStreamReader(System.in);
+                            BufferedReader leo = new BufferedReader(io);
+                            valorObtenido = leo.readLine();*/
+
+                            valorObtenidoDelTeclado = JOptionPane.showInputDialog(null,mensaje);
+                            valorConvertido = Integer.parseInt(valorObtenidoDelTeclado);
+                            pedirNuevamente= false; 
+
+                    } catch (NumberFormatException nf) {
+                            JOptionPane.showMessageDialog (null," MENSAJE: El valor ingresado no corresponde a un dato válido.");
+                            pedirNuevamente= true;
+
+                    } catch (Exception e) {
+                            // TODO: handle exception
+                            pedirNuevamente= true;
+                    }
+		}while (pedirNuevamente);
+                
+		return valorConvertido;
+	}
+	
+        // Conversión a Flotante
+        
+	public float Leer3 (String mensaje){
+            
+		String  valorObtenido;
+		float valorConvertido=0;
+                
+                do{
+                    try {
+                            valorObtenido = JOptionPane.showInputDialog(null,mensaje);
+                            valorConvertido = Float.parseFloat(valorObtenido);
+                            pedirNuevamente= false; 
+
+                    } catch (NumberFormatException nf) {
+                            JOptionPane.showMessageDialog(null," MENSAJE: El valor ingresado no corresponde a un numero.");
+                            pedirNuevamente= true;
+
+                    } catch (Exception e) {
+                            // TODO: handle exception
+                            pedirNuevamente= true;
+                    }
+                }while (pedirNuevamente);
+		
+		return valorConvertido;
+	}
+	
+
+	// Conversión a Entero mayor a Cero (0)
+        
+	public int Leer4 (String mensaje){
+            
+		String  valorObtenido;
+		int valorConvertido=0;
+                
+                do {
+
+                    try {
+                            valorObtenido = JOptionPane.showInputDialog(null,mensaje);
+                            valorConvertido = Integer.parseInt(valorObtenido);
+                            pedirNuevamente= false; 
+                            
+                            if (valorConvertido<=0) {
+                                    JOptionPane.showMessageDialog(null," MENSAJE: El numero ingresado debe ser mayor a Cero(0).");
+                                    pedirNuevamente = !pedirNuevamente;
+                            }
+                            
+                    } catch (NumberFormatException nf) {
+                            JOptionPane.showMessageDialog(null," MENSAJE: El valor ingresado no corresponde a un numero.");
+                            pedirNuevamente= true;
+
+                    } catch (Exception e) {
+                            // TODO: handle exception
+                            pedirNuevamente= true;
+                    }
+                
+                } while (pedirNuevamente);
+                
+		return valorConvertido;
+	}
     
-    
-    
-    
+    // Conversión a Double
+        
     public double leer5 (String alumno){
 		
 		String valorObtenidoDelTeclado = "";
 		double valorRetornado = 0;
-                boolean val =false;
                 
                 do{
-		try{
-                        val =false;
-			/*//Este objeto es para inicializar el teclado del sistema
-			InputStreamReader io = new InputStreamReader(System.in);
-			
-			//Este objeto me permitira obtener los valores ingresados desde el teclado
-			BufferedReader buffer = new BufferedReader(io);*/
-			
-			valorObtenidoDelTeclado = (JOptionPane.showInputDialog(null," Digite la nota del/a alumno/a " + alumno));
-			valorRetornado = Double.parseDouble(valorObtenidoDelTeclado);
-		}catch (NumberFormatException e) {
-			// TODO: handle exception
-			JOptionPane.showMessageDialog(null,"Ingreso un valor incorrecto" );
-                        val=true;
-			
-		}
-                }while (val);
-         // TODO: handle exception
-		
-		return valorRetornado;    
-    
-}
+                    try{
 
+                            valorObtenidoDelTeclado = (JOptionPane.showInputDialog(null," Digite la nota del/a alumno/a " + alumno));
+                            valorRetornado = Double.parseDouble(valorObtenidoDelTeclado);
+                            pedirNuevamente= false; 
+
+                    }catch (NumberFormatException e) {
+                            // TODO: handle exception
+                            JOptionPane.showMessageDialog(null,"Ingreso un valor incorrecto" );
+                            pedirNuevamente= true;
+                    }catch (Exception e) {
+                                // TODO: handle exception
+                                pedirNuevamente= true;
+                    }
+ 
+                }while (pedirNuevamente);
+       
+	return valorRetornado;    
+    
+    }
 }
 
 
